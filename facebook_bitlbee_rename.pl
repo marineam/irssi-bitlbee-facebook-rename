@@ -8,6 +8,7 @@ use Irssi;
 use Irssi::Irc;
 use Text::Unidecode;
 use Encode qw(decode);
+use Devel::Peek;
 
 our $VERSION = '0.02';
 our %IRSSI = (
@@ -60,9 +61,18 @@ sub munge_nickname
 {
   my ($nick) = @_;
 
+  close STDERR;
+  open STDERR, ">>", "/tmp/irssi-facebook-debug.txt";
+
+  print STDERR "\nBefore conversion:\n";
+  Dump($nick);
   $nick = decode('utf8', $nick);
+  print STDERR "\nAfter conversion:\n";
+  Dump($nick);
   $nick =~ s/[- ]/_/g;
   $nick = unidecode($nick); 
+  print STDERR "\nAfter unidecode:\n";
+  Dump($nick);
   $nick =~ s/[^A-Za-z0-9-]//g;
   $nick = substr $nick, 0, 24;
 
