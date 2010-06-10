@@ -21,7 +21,6 @@
 use strict;
 use warnings;
 
-use Socket; # is this actually used?
 use Irssi;
 use Irssi::Irc;
 use Text::Unidecode;
@@ -52,7 +51,7 @@ sub message_join {
 
   my ( $username, $host ) = split /@/, $address, 2;
 
-  if ( $channel =~ /$bitlbeeChannel/
+  if ( $channel eq /$bitlbeeChannel/
     && $host    =~ /$facebookhostname/
     && $nick    =~ /$username/
     && $nick    =~ /^-\d+/ ) {
