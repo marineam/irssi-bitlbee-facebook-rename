@@ -51,7 +51,7 @@ sub message_join {
 
   my ( $username, $host ) = split /@/, $address, 2;
 
-  if ( $channel eq /$bitlbeeChannel/
+  if ( $channel eq $bitlbeeChannel
     && $host    =~ /$facebookhostname/
     && $nick    =~ /$username/
     && $nick    =~ /^-\d+/ ) {
