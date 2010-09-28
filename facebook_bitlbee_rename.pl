@@ -82,8 +82,8 @@ sub whois_data {
 
     if ( $ircname ne $nick ) {
 
-    $server->command("msg $channel rename $nick $ircname");
-    $server->command("msg $channel save");
+    $server->command("^msg $channel rename $nick $ircname");
+    $server->command("^msg $channel save");
 
   }
 
